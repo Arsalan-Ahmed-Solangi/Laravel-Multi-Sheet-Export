@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Exports\MultiSheet;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('downloadFile',function(){
+    return (new MultiSheet())->download('Users.xlsx');
+
+})->name('downloadFile');
